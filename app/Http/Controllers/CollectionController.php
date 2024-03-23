@@ -52,41 +52,7 @@ Truly dependable..........
 
                 (new NotificationController)->Email_nalo($email, $request->station_name, $request->station_officer, $formatted_amount);
 
-                // $content = 'testmessage';
-                // $client = new Client(['verify' => false]);
-                // $endpoint = 'https://email.nalosolutions.com/smsbackend/clientapi/Resl_Prud/send-email/';
-                // $headers = [
-                //     'Content-Type' => 'application/json'
-                // ];
-                // $maildata = [
-                //     "username" => "prudentialbankgh",
-                //     "password" => "Prudentialbankgh@2022",
-                //     "emailTo" => [$email],
-                //     "emailFrom" => "alert@prudentialbank.com.gh",
-                //     "emailBody" => "<p>Dear Customer,</p>
-                //     <p>This is to acknowledge receipt of your cash deposit received at $request->station_name paid by $request->station_officer for an amount of GHS$formatted_amount. </p>
-                //     <p>Your account will be credited when the cash is lodged at the bank.</p>
-                //     <p>Thank you</p>
-                //     <p>Truly dependable..........</p>",
-                //     "senderName" => "Prudential Bank Ltd",
-                //     "subject" => "AlertWise Portal",
-                //     "callBackUrl" => ""
-                // ];
-
-                // try {
-                //     $response =  $client->request('POST', $endpoint, ['json' => $maildata, 'headers' =>  $headers]);
-                //     if ($response == '') {
-                //         abort(503);
-                //     }
-                // } catch (\Exception $e) {
-                //     //api server down
-                //     abort(503);
-                // }
-
-                // $data = $response->getBody();
-                // $jason = json_decode($data, true);
-
-                // return redirect()->back()->with('success', 'Collection Recorded Successfully');
+                return redirect()->back()->with('success', 'Collection Recorded Successfully');
             } else {
                 return redirect()->back()->with('error', 'Failed to record collection');
             }
