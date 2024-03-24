@@ -100,7 +100,7 @@ $today = Carbon::today();
                                         <td>{{$collection->station_officer}}</td>
                                         <td>{{$collection->collector->name}}</td>
                                         <td>{{number_format($collection->amount, 2, '.', ',')}}</td>
-                                        <td><span style="color: blue"> ({{\Carbon\Carbon::parse($collection->created_at)->format('H:i')}})</span></td>
+                                        <td>{{\Carbon\Carbon::parse($collection->created_at)->format('jS F Y')}}<span style="color: blue"> ({{\Carbon\Carbon::parse($collection->created_at)->format('H:i')}})</span></td>
                                     </tr>
                                     @endforeach
 
