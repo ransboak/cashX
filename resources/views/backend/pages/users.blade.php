@@ -78,9 +78,9 @@
                             <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                 <tr>
-                                    <th>user Name</th>
-                                    <th>user Email</th>
-                                    <th>Contact</th>
+                                    <th>User Name</th>
+                                    <th>User Email</th>
+                                    <th>Role</th>
                                     {{-- <th>Amount (GHS)</th>
                                     <th>Date (time)</th> --}}
                                 </tr>
@@ -89,6 +89,7 @@
 
                                 <tbody>
                                     @foreach ($users as $user)
+                                    @if($user->role !== 'admin')
                                     <tr>
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->email}}</td>
@@ -96,6 +97,7 @@
                                         {{-- <td>{{number_format($user->amount, 2, '.', ',')}}</td>
                                         <td>{{\Carbon\Carbon::parse($user->created_at)->format('jS F, Y')}} <span style="color: blue"> ({{\Carbon\Carbon::parse($user->created_at)->format('H:i')}})</span></td> --}}
                                     </tr>
+                                    @endif
                                     @endforeach
 
 
@@ -130,7 +132,7 @@
                                 <select class="form-control" id="exampleFormControlSelect1" name="role">
                                     <option value="collector" >Collector</option>
                                     <option value="manager">Manager</option>
-                                    <option value="admin">Admin</option>
+                                    {{-- <option value="admin">Admin</option> --}}
                                 </select>
                             </div>
                             <div class="modal-footer">
@@ -168,7 +170,7 @@
         setTimeout(() => {
             document.getElementById('spinnerBtn').classList.add('hidden');
             document.getElementById('addBtn').classList.remove('hidden');
-        }, 3000);
+        }, 6000);
         
     });
 </script>

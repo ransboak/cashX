@@ -88,7 +88,7 @@ $today = Carbon::today();
                                     <th>Station Officer</th>
                                     <th>Collector</th>
                                     <th>Amount (GHS)</th>
-                                    <th>Time</th>
+                                    <th>Date (Time)</th>
                                 </tr>
                                 </thead>
 
@@ -167,7 +167,7 @@ $today = Carbon::today();
         setTimeout(() => {
             document.getElementById('spinnerBtn').classList.add('hidden');
             document.getElementById('addBtn').classList.remove('hidden');
-        }, 3000);
+        }, 6000);
         
         
     });

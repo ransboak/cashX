@@ -41,7 +41,7 @@ class CollectionController extends Controller
             $time = \Carbon\Carbon::parse($collection->created_at)->format('H:i');
 
             if ($collection) {
-                (new NotificationController)->SMS_wirepick($customer->contact, "Dear Customer,
+                (new NotificationController)->SMS_nalo($customer->contact, "Dear Customer,
 This is to acknowledge receipt of your cash deposit received at $request->station_name paid by $request->station_officer for an amount of GHS$formatted_amount.
 Your account will be credited when the cash is lodged at the bank.
 

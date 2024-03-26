@@ -213,7 +213,7 @@ $today = Carbon::today();
         setTimeout(() => {
             document.getElementById('spinnerBtn2').classList.add('hidden');
             document.getElementById('addBtn2').classList.remove('hidden');
-        }, 3000);
+        }, 8000);
     });
 </script>
 
