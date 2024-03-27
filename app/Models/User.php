@@ -47,4 +47,10 @@ class User extends Authenticatable
     public function Collections(){
         return $this->hasMany(Collection::class, 'user_id');
     }
+
+    public function changePassword(){
+        if($this->password_changed_at === null){
+            return true;
+        }
+    }
 }

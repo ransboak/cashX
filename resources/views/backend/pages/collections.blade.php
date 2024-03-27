@@ -204,7 +204,7 @@ $today = Carbon::today();
         setTimeout(() => {
             document.getElementById('spinnerBtn').classList.add('hidden');
             document.getElementById('addBtn').classList.remove('hidden');
-        }, 3000);
+        }, 8000);
     });
     document.getElementById('addBtn2').addEventListener('click', function() {
         // Show preloader
@@ -213,7 +213,7 @@ $today = Carbon::today();
         setTimeout(() => {
             document.getElementById('spinnerBtn2').classList.add('hidden');
             document.getElementById('addBtn2').classList.remove('hidden');
-        }, 8000);
+        }, 6000);
     });
 </script>
 

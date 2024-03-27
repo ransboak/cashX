@@ -72,6 +72,10 @@ class PageController extends Controller
         }
     }
 
+    public function changePassword(){
+        return view('profile.partials.update-password-form');
+    }
+
     public function customerCollections($id){
         if(Auth::user()){
             $collections = Collection::where('customer_id', $id);

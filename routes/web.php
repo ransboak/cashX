@@ -49,6 +49,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/customer/collections/{id}', [PageController::class, 'customerCollections'])->name('customerCollections');
     Route::get('/customers', [PageController::class, 'customers'])->name('customers');
     Route::get('/dashboard/allCollections', [PageController::class, 'allCollections'])->name('allCollections');
+    Route::get('/change-password', [PageController::class, 'changePassword'])->name('changePassword');
     Route::post('/dashboard/getCollections', [PageController::class, 'getCollections'])->name('getCollections');
 });
 

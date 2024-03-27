@@ -41,16 +41,20 @@ class CollectionController extends Controller
             $time = \Carbon\Carbon::parse($collection->created_at)->format('H:i');
 
             if ($collection) {
+                $email = $customer->email;
+
+                (new NotificationController)->Email_nalo($customer->email, $request->station_name, $request->station_officer, $formatted_amount, $time);
+
+
                 (new NotificationController)->SMS_nalo($customer->contact, "Dear Customer,
 This is to acknowledge receipt of your cash deposit received at $request->station_name paid by $request->station_officer for an amount of GHS$formatted_amount.
 Your account will be credited when the cash is lodged at the bank.
+Time of receipt is $time.
 
 Thank you
 Truly dependable..........
 ");
-                $email = $customer->email;
-
-                (new NotificationController)->Email_nalo($email, $request->station_name, $request->station_officer, $formatted_amount);
+                
 
                 return redirect()->back()->with('success', 'Collection Recorded Successfully');
             } else {
