@@ -1,5 +1,5 @@
 
-
+@include('layouts.navigation')
 <x-app-layout>
     
     <x-slot name="header">

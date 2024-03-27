@@ -30,6 +30,7 @@ Route::get('/', function () {
     }
 });
 
+Route::get('/change-password', [PageController::class, 'changePassword'])->middleware('auth')->name('password.change');
 Route::get('/dashboard', function () {
     $today = Carbon::today();
     $collection_today = Collection::where('created_at', '>=', $today)->pluck('amount')->sum();
@@ -37,10 +38,10 @@ Route::get('/dashboard', function () {
     $collection_total = Collection::all()->pluck('amount')->sum();
     $collection_total_count = Collection::all()->count();
     return view('backend.pages.dashboard', compact('collection_total', 'collection_today', 'collection_today_count', 'collection_total_count'));
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified', 'force.password.change'])->name('dashboard');
 
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'force.password.change'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -49,11 +50,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/customer/collections/{id}', [PageController::class, 'customerCollections'])->name('customerCollections');
     Route::get('/customers', [PageController::class, 'customers'])->name('customers');
     Route::get('/dashboard/allCollections', [PageController::class, 'allCollections'])->name('allCollections');
-    Route::get('/change-password', [PageController::class, 'changePassword'])->name('changePassword');
     Route::post('/dashboard/getCollections', [PageController::class, 'getCollections'])->name('getCollections');
 });
 
-Route::middleware(['auth', 'admin'])->group(function () {
+Route::middleware(['auth', 'admin', 'force.password.change'])->group(function () {
     Route::post('/addUser', [UserController::class, 'addUser'])->name('addUser');
     Route::get('/users', [PageController::class, 'getUsers'])->name('getUsers');
 });
